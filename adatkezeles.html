@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adatkezelési Tájékoztató – Tanulify</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f; --bg-nav: rgba(10,10,15,0.85); --bg-card: #111118;
+      --text: #f0f0f5; --text-muted: #8b8b9e; --text-dim: #555568;
+      --accent: #6c63ff; --accent-light: #8b85ff; --accent-bg: rgba(108,99,255,0.08);
+      --border: rgba(255,255,255,0.07); --border-strong: rgba(255,255,255,0.14);
+      --premium: #f59e0b; --radius: 16px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--bg-nav); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-brand { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); text-decoration: none; }
+    .nav-brand span { color: var(--accent); }
+    .nav-back { font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border-strong); transition: color 0.2s, background 0.2s; }
+    .nav-back:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+
+    .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+    .page-header { padding: 120px 0 48px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+    .page-tag { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-light); background: var(--accent-bg); border: 1px solid rgba(108,99,255,0.25); padding: 4px 12px; border-radius: 100px; margin-bottom: 20px; }
+    .page-title { font-size: clamp(26px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .page-meta { font-size: 14px; color: var(--text-dim); }
+    .page-meta strong { color: var(--text-muted); }
+
+    .ph { background: rgba(108,99,255,0.1); border: 1px dashed rgba(108,99,255,0.35); border-radius: 6px; padding: 2px 8px; color: var(--accent-light); font-family: monospace; font-size: 13px; }
+
+    .toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 48px; }
+    .toc h3 { font-size: 12px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+    .toc ol { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+    .toc li a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .toc li a:hover { color: var(--accent-light); }
+
+    .doc-section { margin-bottom: 48px; }
+    .doc-section h2 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .snum { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; background: var(--accent-bg); border: 1px solid rgba(108,99,255,0.2); font-size: 12px; font-weight: 700; color: var(--accent-light); flex-shrink: 0; }
+    .doc-section p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 14px; }
+    .doc-section p:last-child { margin-bottom: 0; }
+    .doc-section ul, .doc-section ol { padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+    .doc-section li { font-size: 15px; color: var(--text-muted); line-height: 1.75; }
+
+    .info-box { background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
+    .info-box p { font-size: 14px; margin-bottom: 0; }
+
+    .data-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 14px; }
+    .data-table th { text-align: left; font-size: 11px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    .data-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--text-muted); vertical-align: top; line-height: 1.6; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; }
+    a.link { color: var(--accent-light); text-decoration: none; }
+    a.link:hover { text-decoration: underline; }
+
+    .rights-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 14px; }
+    .right-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+    .right-card h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .right-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 0; }
+
+    .processor-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px; }
+    .processor-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--accent-bg); border: 1px solid rgba(108,99,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
+    .processor-info h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .processor-info p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 0; }
+
+    .doc-footer { border-top: 1px solid var(--border); padding: 28px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .doc-footer-copy { font-size: 13px; color: var(--text-dim); }
+    .doc-footer-links { display: flex; gap: 20px; }
+    .doc-footer-links a { font-size: 13px; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .doc-footer-links a:hover { color: var(--text-muted); }
+
+    @media (max-width: 600px) {
+      .page-header { padding: 100px 0 36px; }
+      .rights-grid { grid-template-columns: 1fr; }
+      .doc-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Tanuli<span>fy</span></a>
+    <a href="index.html" class="nav-back">← Vissza a főoldalra</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="page-header">
+    <div class="page-tag">Jogi dokumentum</div>
+    <h1 class="page-title">Adatkezelési Tájékoztató</h1>
+    <p class="page-meta">
+      Hatályos: <strong><span class="ph">HATALYBA_LEPES_DATUMA</span></strong> &nbsp;·&nbsp;
+      Utolsó módosítás: <strong><span class="ph">UTOLSO_MODOSITAS_DATUMA</span></strong>
+    </p>
+  </div>
+
+  <div class="toc">
+    <h3>Tartalomjegyzék</h3>
+    <ol>
+      <li><a href="#s1">Az adatkezelő adatai</a></li>
+      <li><a href="#s2">Kezelt adatok és céljuk</a></li>
+      <li><a href="#s3">Az adatkezelés jogalapja</a></li>
+      <li><a href="#s4">Adatmegőrzési idő</a></li>
+      <li><a href="#s5">Adatfeldolgozók</a></li>
+      <li><a href="#s6">Az érintett jogai</a></li>
+      <li><a href="#s7">Adatbiztonság</a></li>
+      <li><a href="#s8">Jogorvoslat</a></li>
+    </ol>
+  </div>
+
+  <div class="doc-section" id="s1">
+    <h2><span class="snum">1</span> Az adatkezelő adatai</h2>
+    <table class="data-table">
+      <tr><td>Adatkezelő neve</td><td><span class="ph">VALLALKOZAS_NEV_IDE</span></td></tr>
+      <tr><td>Székhely</td><td><span class="ph">SZEKHELY_IDE</span></td></tr>
+      <tr><td>Adószám</td><td><span class="ph">ADOSZAM_IDE</span></td></tr>
+      <tr><td>E-mail</td><td><a href="mailto:hello@tanulify.hu" class="link">hello@tanulify.hu</a></td></tr>
+    </table>
+    <div class="info-box">
+      <p>A Tanulify elkötelezett a személyes adatok védelme iránt. Jelen tájékoztató az Európai Parlament és a Tanács (EU) 2016/679 rendelete (GDPR) és az információs önrendelkezési jogról szóló 2011. évi CXII. törvény alapján készült.</p>
+    </div>
+  </div>
+
+  <div class="doc-section" id="s2">
+    <h2><span class="snum">2</span> Kezelt adatok és céljuk</h2>
+    <table class="data-table">
+      <thead><tr><th>Adat</th><th>Cél</th><th>Kötelező?</th></tr></thead>
+      <tbody>
+        <tr><td>E-mail-cím</td><td>A megrendelés visszaigazolása, az elkészült app kézbesítése, kapcsolattartás</td><td>Igen</td></tr>
+        <tr><td>Feltöltött fájl (tananyag)</td><td>A megrendelt alkalmazás elkészítése</td><td>Igen</td></tr>
+        <tr><td>Kiválasztott csomag és nyelv</td><td>A megrendelés teljesítése</td><td>Igen</td></tr>
+        <tr><td>Fizetési adatok</td><td>A tranzakció feldolgozása (kizárólag a Stripe kezeli, az adatkezelő nem fér hozzá bankkártya-adatokhoz)</td><td>Igen</td></tr>
+      </tbody>
+    </table>
+    <p>A Tanulify nem gyűjt sütiket, nem használ analitikai eszközöket, és nem tárol személyes adatokat az ügyféladatbázisban a megrendelés teljesítésén túl.</p>
+  </div>
+
+  <div class="doc-section" id="s3">
+    <h2><span class="snum">3</span> Az adatkezelés jogalapja</h2>
+    <p>Az adatkezelés jogalapja minden esetben a GDPR 6. cikk (1) bekezdés b) pontja: <strong>a szerződés teljesítése</strong>, amelynek az érintett az egyik fele.</p>
+    <p>A megrendelés leadásával a Megrendelő hozzájárul ahhoz, hogy a Szolgáltató a fent felsorolt adatokat a megrendelés teljesítéséhez felhasználja.</p>
+  </div>
+
+  <div class="doc-section" id="s4">
+    <h2><span class="snum">4</span> Adatmegőrzési idő</h2>
+    <table class="data-table">
+      <thead><tr><th>Adat</th><th>Megőrzési idő</th></tr></thead>
+      <tbody>
+        <tr><td>E-mail-cím, megrendelési adatok</td><td>A számviteli kötelezettségeknek megfelelően 8 év (2000. évi C. törvény)</td></tr>
+        <tr><td>Feltöltött tananyag fájl</td><td>Az alkalmazás átadását követő 30 nap, majd törlés</td></tr>
+        <tr><td>Fizetési adatok</td><td>A Stripe adatmegőrzési szabályzata szerint (lásd: stripe.com/privacy)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="doc-section" id="s5">
+    <h2><span class="snum">5</span> Adatfeldolgozók</h2>
+    <p>A Szolgáltató az alábbi adatfeldolgozókat veszi igénybe:</p>
+
+    <div class="processor-card">
+      <div class="processor-icon">💳</div>
+      <div class="processor-info">
+        <h4>Stripe, Inc.</h4>
+        <p>Fizetési tranzakciók feldolgozása. Székhely: 510 Townsend Street, San Francisco, CA 94103, USA. Adatvédelmi tájékoztató: <a href="https://stripe.com/privacy" target="_blank" class="link">stripe.com/privacy</a></p>
+      </div>
+    </div>
+
+    <div class="processor-card">
+      <div class="processor-icon">📋</div>
+      <div class="processor-info">
+        <h4>Fillout, Inc.</h4>
+        <p>Megrendelési űrlap és fájlfeltöltés kezelése. A feltöltött fájlok az űrlap-szolgáltató szerverein átmenetileg tárolódnak. Adatvédelmi tájékoztató: <a href="https://www.fillout.com/privacy" target="_blank" class="link">fillout.com/privacy</a></p>
+      </div>
+    </div>
+
+    <div class="processor-card">
+      <div class="processor-icon">🌐</div>
+      <div class="processor-info">
+        <h4>GitHub, Inc.</h4>
+        <p>Weboldal-tárhelyszolgáltatás. Székhely: 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA. Adatvédelmi tájékoztató: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" class="link">GitHub Privacy Statement</a></p>
+      </div>
+    </div>
+
+    <div class="processor-card">
+      <div class="processor-icon">🤖</div>
+      <div class="processor-info">
+        <h4>Groq, Inc.</h4>
+        <p>Az alkalmazásba épített AI tanár funkcióhoz használt API-szolgáltató. A tananyag tartalma az AI válaszgenerálás során feldolgozásra kerül. Adatvédelmi tájékoztató: <a href="https://groq.com/privacy-policy/" target="_blank" class="link">groq.com/privacy-policy</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section" id="s6">
+    <h2><span class="snum">6</span> Az érintett jogai</h2>
+    <p>A GDPR alapján a Megrendelőt az alábbi jogok illetik meg:</p>
+    <div class="rights-grid">
+      <div class="right-card">
+        <h4>🔍 Hozzáférés joga</h4>
+        <p>Tájékoztatást kérhet a kezelt személyes adatairól.</p>
+      </div>
+      <div class="right-card">
+        <h4>✏️ Helyesbítés joga</h4>
+        <p>Kérheti a pontatlan adatok helyesbítését.</p>
+      </div>
+      <div class="right-card">
+        <h4>🗑️ Törlés joga</h4>
+        <p>Kérheti adatai törlését, ha az adatkezelés célja megszűnt.</p>
+      </div>
+      <div class="right-card">
+        <h4>⏸️ Korlátozás joga</h4>
+        <p>Kérheti az adatkezelés korlátozását bizonyos esetekben.</p>
+      </div>
+      <div class="right-card">
+        <h4>📦 Hordozhatóság joga</h4>
+        <p>Kérheti adatait géppel olvasható formátumban.</p>
+      </div>
+      <div class="right-card">
+        <h4>🚫 Tiltakozás joga</h4>
+        <p>Tiltakozhat az adatkezelés ellen jogos érdek alapján.</p>
+      </div>
+    </div>
+    <p>Jogai gyakorlásához írjon a <a href="mailto:hello@tanulify.hu" class="link">hello@tanulify.hu</a> e-mail-címre. A Szolgáltató 30 napon belül válaszol.</p>
+  </div>
+
+  <div class="doc-section" id="s7">
+    <h2><span class="snum">7</span> Adatbiztonság</h2>
+    <p>A Szolgáltató az adatokat bizalmasan kezeli, harmadik félnek nem adja át — kivéve a fent felsorolt adatfeldolgozókat, akik a szolgáltatás teljesítéséhez szükségesek.</p>
+    <p>A Tanulify nem épít fel ügyfél-adatbázist, nem küld hírlevelet, és nem használja az adatokat marketingcélokra.</p>
+  </div>
+
+  <div class="doc-section" id="s8">
+    <h2><span class="snum">8</span> Jogorvoslat</h2>
+    <p>Ha úgy érzi, hogy adatai kezelése jogsértő, panaszt tehet a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH):</p>
+    <ul>
+      <li>Weboldal: <a href="https://www.naih.hu" target="_blank" class="link">naih.hu</a></li>
+      <li>Postacím: 1363 Budapest, Pf. 9.</li>
+      <li>E-mail: <a href="mailto:ugyfelszolgalat@naih.hu" class="link">ugyfelszolgalat@naih.hu</a></li>
+    </ul>
+    <p>Emellett bírósághoz is fordulhat személyes adatai védelme érdekében.</p>
+  </div>
+
+  <div class="doc-footer">
+    <span class="doc-footer-copy">© <span class="ph">VALLALKOZAS_NEV_IDE</span> – Tanulify</span>
+    <div class="doc-footer-links">
+      <a href="aszf.html">ÁSZF</a>
+      <a href="index.html#impresszum">Impresszum</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
