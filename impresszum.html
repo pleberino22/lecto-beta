@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impresszum – Lecto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f; --bg-nav: rgba(10,10,15,0.85); --bg-card: #111118;
+      --text: #f0f0f5; --text-muted: #8b8b9e; --text-dim: #555568;
+      --accent: #6c63ff; --accent-light: #8b85ff; --accent-bg: rgba(108,99,255,0.08);
+      --border: rgba(255,255,255,0.07); --border-strong: rgba(255,255,255,0.14);
+      --premium: #f59e0b; --radius: 16px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--bg-nav); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-brand { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; color: var(--text); text-decoration: none; }
+    .nav-brand span { color: var(--accent); }
+    .nav-back { font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border-strong); transition: color 0.2s, background 0.2s; }
+    .nav-back:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+
+    .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+    .page-header { padding: 120px 0 48px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+    .page-tag { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-light); background: var(--accent-bg); border: 1px solid rgba(108,99,255,0.25); padding: 4px 12px; border-radius: 100px; margin-bottom: 20px; }
+    .page-title { font-size: clamp(26px, 5vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .page-meta { font-size: 14px; color: var(--text-dim); }
+
+    .ph { background: rgba(108,99,255,0.1); border: 1px dashed rgba(108,99,255,0.35); border-radius: 6px; padding: 2px 8px; color: var(--accent-light); font-family: monospace; font-size: 13px; }
+
+    .doc-section { margin-bottom: 48px; }
+    .doc-section h2 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .doc-section p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 14px; }
+    .doc-section p:last-child { margin-bottom: 0; }
+
+    .data-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 14px; }
+    .data-table td { padding: 14px 14px; border-bottom: 1px solid var(--border); color: var(--text-muted); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; width: 200px; }
+    a.link { color: var(--accent-light); text-decoration: none; }
+    a.link:hover { text-decoration: underline; }
+
+    .info-box { background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 10px; padding: 16px 20px; margin: 24px 0 0; }
+    .info-box p { font-size: 14px; margin-bottom: 0; }
+
+    .doc-footer { border-top: 1px solid var(--border); padding: 28px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 0; }
+    .doc-footer-copy { font-size: 13px; color: var(--text-dim); }
+    .doc-footer-links { display: flex; gap: 20px; }
+    .doc-footer-links a { font-size: 13px; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .doc-footer-links a:hover { color: var(--text-muted); }
+
+    @media (max-width: 600px) {
+      .page-header { padding: 100px 0 36px; }
+      .doc-footer { flex-direction: column; align-items: flex-start; }
+      .data-table td:first-child { white-space: normal; width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Lect<span>o</span></a>
+    <a href="index.html" class="nav-back">← Vissza a főoldalra</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="page-header">
+    <div class="page-tag">Jogi dokumentum</div>
+    <h1 class="page-title">Impresszum</h1>
+    <p class="page-meta">A lecto.hu weboldal üzemeltetőjének adatai</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>Szolgáltató adatai</h2>
+    <table class="data-table">
+      <tr>
+        <td>Szolgáltató neve</td>
+        <td><span class="ph">VALLALKOZAS_NEV_IDE</span></td>
+      </tr>
+      <tr>
+        <td>Székhely</td>
+        <td><span class="ph">SZEKHELY_IDE</span></td>
+      </tr>
+      <tr>
+        <td>Adószám</td>
+        <td><span class="ph">ADOSZAM_IDE</span></td>
+      </tr>
+      <tr>
+        <td>Nyilvántartási szám</td>
+        <td><span class="ph">NYILVANTARTASI_SZAM_IDE</span></td>
+      </tr>
+      <tr>
+        <td>Vállalkozás formája</td>
+        <td>Egyéni vállalkozó</td>
+      </tr>
+      <tr>
+        <td>E-mail</td>
+        <td><a href="mailto:hello@lecto.hu" class="link">hello@lecto.hu</a></td>
+      </tr>
+      <tr>
+        <td>Weboldal</td>
+        <td><a href="https://lecto.hu" class="link">lecto.hu</a></td>
+      </tr>
+      <tr>
+        <td>Tárhely-szolgáltató</td>
+        <td>GitHub, Inc. — 88 Colin P Kelly Jr St, San Francisco, CA 94107</td>
+      </tr>
+    </table>
+
+    <div class="info-box">
+      <p>A szolgáltató alanyi adómentes, ezért a számlán ÁFA nem kerül feltüntetésre.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>Szerzői jogok</h2>
+    <p>A lecto.hu weboldalon megjelenő tartalmak (szövegek, grafikák, arculat, forráskód) szerzői jogi védelem alatt állnak. Azok engedély nélküli másolása, felhasználása vagy terjesztése tilos.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>Felelősség kizárása</h2>
+    <p>A szolgáltató mindent megtesz a weboldal folyamatos és hibamentes üzemeltetéséért, azonban nem vállal felelősséget az esetleges technikai hibákból, leállásokból eredő károkért. A külső hivatkozások (linkek) tartalmáért a szolgáltató nem felel.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>Alkalmazandó jog</h2>
+    <p>A weboldalra és a szolgáltatásra a magyar jog az irányadó. A felhasználók panaszaikkal az <a href="mailto:hello@lecto.hu" class="link">hello@lecto.hu</a> e-mail-címen kereshetik a szolgáltatót, illetve fordulhatnak a hatáskörrel rendelkező fogyasztóvédelmi hatósághoz vagy Békéltető Testülethez.</p>
+  </div>
+
+  <footer class="doc-footer">
+    <span class="doc-footer-copy">© 2025 Lecto. Minden jog fenntartva.</span>
+    <nav class="doc-footer-links">
+      <a href="aszf.html">ÁSZF</a>
+      <a href="adatkezeles.html">Adatkezelés</a>
+      <a href="impresszum.html">Impresszum</a>
+    </nav>
+  </footer>
+
+</div>
+
+</body>
+</html>
